@@ -1,0 +1,27 @@
+# Machine-readable citation metadata. GitHub renders a "Cite this repository" button from this file.
+cff-version: 1.2.0
+title: "State of MCP"
+message: "If you use this dataset, please cite it using the metadata in this file."
+type: dataset
+authors:
+  - name: "RoninForge"
+    email: "jens@rasta.online"
+    website: "https://roninforge.org"
+abstract: >-
+  A dated, keyless health and conformance census of the official Model Context
+  Protocol registry. Every server is checked with the same public,
+  unauthenticated probes (the registry, the public GitHub API, npm, PyPI,
+  anonymous Docker Hub, and a capability-only MCP initialize/tools-list
+  exchange) and given a verdict: healthy, degraded, dead, or unknown. Produced
+  with akashi, reproducible row by row.
+url: "https://roninforge.org/data/state-of-mcp/"
+repository-code: "https://github.com/RoninForge/state-of-mcp"
+license: CC-BY-4.0
+date-released: 2026-07-02
+keywords:
+  - Model Context Protocol
+  - MCP
+  - MCP registry
+  - server health
+  - protocol conformance
+  - census

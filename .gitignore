@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+*.log
+.env
+.env.*
+
+# pre-release dev-time sample scans (not part of a published census)
+data/samples/
