@@ -9,6 +9,40 @@ unauthenticated probes and given a verdict: healthy, degraded, dead, or unknown.
 snapshot, not a leaderboard: what fraction of the registry actually works, on a given date, and
 where it breaks.
 
+## Headline (2026-07-22): the 2026-07-28 spec-readiness edition
+
+Twenty days after the first census the registry has grown 24%, from 14,559 to **18,032 servers**,
+and the health rates barely moved: 79.7% healthy, 15.8% degraded, 4.0% dead, 0.5% unknown. The
+growth is real servers, not rot.
+
+This edition adds a **2026-07-28 spec-readiness pass**, run six days before the specification's
+publication date against its release candidate. Of the **4,937 servers reachable through a
+conformant keyless `initialize`** (the only population whose runtime behavior can be measured):
+
+| Readiness verdict | Count | Share of reachable |
+|---|---|---|
+| ready | 0 | 0.0% |
+| needs-migration | 4,225 | 85.6% |
+| at-risk (on a removed or deprecated surface) | 712 | 14.4% |
+
+- **Zero servers are fully ready**: none passes all four required-conformance signals
+  (`server/discover`, handshake-free stateless calls, session independence, routing-header
+  enforcement). 37 implement `server/discover`, 39 enforce routing headers, and 40 servers are
+  exactly one condition away.
+- **The counterweight: 81.2% (4,010) already tolerate handshake-free stateless calls**, the
+  heart of the new revision. The ecosystem is closer to the stateless core than the zero
+  suggests.
+- 805 servers (16.3%) still mint the removed `Mcp-Session-Id`; 528 hard-require it and cannot
+  serve new-spec clients without change.
+- Negotiated protocol versions: 2,799 on 2025-06-18, 1,536 on 2025-03-26, 528 still on
+  2024-11-05, 61 on 2025-11-25, and exactly one server already answering 2026-07-28.
+
+Readiness percentages use ONLY the reachable-remote denominator (4,937), never the 18,032
+registered total; a package-only server has no runtime endpoint to measure. Verdicts were
+computed under ruleset `2026-07-28-rc` (the release candidate); they will be re-verified against
+the final specification text on its 2026-07-28 publication day. Full rules in
+[METHODOLOGY.md](METHODOLOGY.md).
+
 ## Headline (2026-07-02)
 
 We checked all 14,559 servers in the official registry. Most are not dead: about 80% are
@@ -61,9 +95,10 @@ data/censuses/<date>/summary.json    verdict counts and rates, segments, run par
   breakdown, name-validation findings, and the run's reproducibility parameters (registry URL,
   akashi version, concurrency, timeout, start and finish time).
 
-There is one census so far, dated `2026-07`. Future censuses will land in their own dated
-`data/censuses/<date>/` directory alongside this one, so the dataset accumulates rather than
-overwrites.
+There are two censuses so far: `2026-07` (the 2026-07-02 baseline) and `2026-07-22` (the
+spec-readiness edition, whose records add a `readiness` object per reachable server). Each
+census lands in its own dated `data/censuses/<date>/` directory; the dataset accumulates,
+never overwrites.
 
 ## How this is produced
 

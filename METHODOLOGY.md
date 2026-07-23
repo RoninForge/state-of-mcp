@@ -132,3 +132,42 @@ denominator, with the per-layer breakdown and the keyless, reproducible framing 
   than what a keyless probe can see.
 - `tools/list` completion is informational and does not affect a verdict, since a valid MCP server
   may advertise no tools.
+
+## Spec-readiness pass (2026-07-22 edition)
+
+The 2026-07-22 census adds a readiness dimension for the 2026-07-28 specification revision,
+measured with akashi's readiness pass (akashi commit d54c52d, ruleset `2026-07-28-rc`). It runs
+only against a server's first remote that answered a conformant `initialize`, and adds a small
+set of read-only, unauthenticated calls: a handshake-free `tools/list` carrying the protocol
+version in `_meta`, `server/discover`, a `tools/list` whose `Mcp-Method` routing header
+deliberately mismatches, a `subscriptions/listen` existence check (a genuine result only; error
+codes are ambiguous across SDKs), one GET (to detect the legacy HTTP+SSE `endpoint` event), a
+`resources/read` of a sentinel URI that cannot exist (only when the server declares the
+resources capability), and a fetch of the public RFC 9728 `/.well-known/oauth-protected-resource`
+metadata. No call authenticates and no call executes a tool.
+
+Verdicts, first match wins:
+
+1. **No verdict (unknown)**: the server has no keylessly reachable conformant MCP endpoint
+   (package-only, auth-gated, or down). Absence of evidence is recorded as absence.
+2. **at-risk**: reachable AND on a removed-or-deprecated surface: declares the deprecated
+   HTTP+SSE transport, was built on the removed experimental Tasks API, or hard-requires the
+   removed `Mcp-Session-Id` session mechanism.
+3. **ready**: reachable AND all four required-conformance signals pass: `server/discover`
+   implemented, handshake-free calls accepted, no session minted or required, routing-header
+   mismatch rejected.
+4. **needs-migration**: everything else reachable.
+
+Advisory observations (`resultType` and cache metadata on results, the resource-not-found error
+code, a declared logging capability) never affect the verdict; they are recorded as warnings.
+
+Denominator rules: readiness percentages are computed ONLY over servers with a readiness verdict
+(4,937 in this edition), never over the registered total. A registered-total denominator may only
+carry declared metadata (for example the server.json schema-version distribution), never runtime
+readiness.
+
+Release-candidate caveat: the 2026-07-28 specification is a release candidate until its
+publication day. The probe accepts both the RC and the renumbered final error codes for the
+routing-header check, and every verdict records the ruleset version that produced it. The rules
+will be re-diffed against the final specification text when it publishes; because the raw
+observables are persisted per server, a rule change recomputes verdicts without a re-scan.
