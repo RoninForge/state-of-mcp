@@ -19,10 +19,15 @@ Share and adapt the data for any purpose, including commercially.
 Give appropriate credit, link to this license, and indicate if changes were made. A clear
 attribution:
 
-> State of MCP by RoninForge (https://github.com/RoninForge/state-of-mcp), CC BY 4.0.
+> State of MCP by RoninForge (https://roninforge.org/data/state-of-mcp/), CC BY 4.0.
 
-When practical, also cite the census date of the values you used (this release is dated
-`2026-07-02`), so downstream readers know exactly which snapshot of the registry the figures
+Credit the dataset's home page rather than the source repository. The page carries the
+methodology, the denominators and the findings, and it stays correct if the code moves. This
+repository is the dataset the page is built from. Copy-paste formats for every medium are in
+[ATTRIBUTION.md](ATTRIBUTION.md).
+
+When practical, also cite the census date of the values you used (the most recent census is
+`2026-07-22`), so downstream readers know exactly which snapshot of the registry the figures
 describe.
 
 ## Why the underlying facts are not exclusive
