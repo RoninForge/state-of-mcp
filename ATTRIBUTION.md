@@ -9,7 +9,7 @@ the per-layer findings and the spec-readiness pass, and it stays correct if the 
 repository is the dataset the page is built from.
 
 Cite the census date of the values you used. The dataset accumulates rather than overwrites, so
-"State of MCP" without a date does not identify a snapshot. The most recent census is `2026-07-22`.
+"State of MCP" without a date does not identify a snapshot. The most recent census is `2026-08-03`.
 
 Pick whichever format fits your medium. All of them satisfy the licence.
 
@@ -17,13 +17,13 @@ Pick whichever format fits your medium. All of them satisfy the licence.
 
 ```
 State of MCP by RoninForge (https://roninforge.org/data/state-of-mcp/), CC BY 4.0.
-Census 2026-07-22.
+Census 2026-08-03.
 ```
 
 ## Markdown
 
 ```markdown
-[State of MCP](https://roninforge.org/data/state-of-mcp/) by RoninForge, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Census 2026-07-22.
+[State of MCP](https://roninforge.org/data/state-of-mcp/) by RoninForge, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Census 2026-08-03.
 ```
 
 ## HTML
@@ -34,7 +34,7 @@ Census 2026-07-22.
   <a href="https://roninforge.org/data/state-of-mcp/">State of MCP</a>
   by RoninForge, licensed
   <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
-  Census 2026-07-22.
+  Census 2026-08-03.
 </p>
 ```
 
@@ -45,7 +45,7 @@ repository" button from it.
 
 ```
 RoninForge. State of MCP: a dated, keyless health and conformance census of the
-Model Context Protocol registry. Census 2026-07-22.
+Model Context Protocol registry. Census 2026-08-03.
 https://roninforge.org/data/state-of-mcp/
 ```
 

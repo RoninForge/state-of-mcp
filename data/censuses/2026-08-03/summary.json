@@ -1,0 +1,83 @@
+{
+  "registryBaseUrl": "https://registry.modelcontextprotocol.io/v0/servers",
+  "akashiVersion": "v0.3.0-6-gb1c497b",
+  "concurrency": 8,
+  "limit": 0,
+  "startedAt": "2026-08-03T07:42:54Z",
+  "finishedAt": "2026-08-03T12:30:39Z",
+  "overall": {
+    "total": 19804,
+    "counts": {
+      "dead": 851,
+      "degraded": 2792,
+      "healthy": 15974,
+      "unknown": 187
+    },
+    "rates": {
+      "dead": 0.0429711169460715,
+      "degraded": 0.14098161987477278,
+      "healthy": 0.8066047263179156,
+      "unknown": 0.009442536861240153
+    }
+  },
+  "segments": {
+    "remote": {
+      "total": 9957,
+      "counts": {
+        "dead": 754,
+        "degraded": 1648,
+        "healthy": 7555,
+        "unknown": 0
+      },
+      "rates": {
+        "dead": 0.07572562016671688,
+        "degraded": 0.16551170031133874,
+        "healthy": 0.7587626795219443,
+        "unknown": 0
+      }
+    }
+  },
+  "nameIssues": {
+    "badCharset": {
+      "count": 3906,
+      "sample": [
+        "ai.newzai.api/NewzAI",
+        "ai.smithery/Aman-Amith-Shastry-scientific_computation_mcp",
+        "ai.smithery/Artin0123-gemini-image-mcp-server",
+        "ai.smithery/BadRooBot-my_test_mcp",
+        "ai.smithery/BadRooBot-test_m",
+        "ai.smithery/BigVik193-reddit-ads-mcp",
+        "ai.smithery/BigVik193-reddit-ads-mcp-api",
+        "ai.smithery/BigVik193-reddit-ads-mcp-test",
+        "ai.smithery/BigVik193-reddit-user-mcp",
+        "ai.smithery/BowenXU0126-aistudio_hw3",
+        "ai.smithery/ChiR24-unreal_mcp",
+        "ai.smithery/ChiR24-unreal_mcp_server",
+        "ai.smithery/CollectiveSpend-collectivespend-smithery-mcp",
+        "ai.smithery/CryptoCultCurt-appfolio-mcp-server",
+        "ai.smithery/Danushkumar-V-mcp-discord",
+        "ai.smithery/DynamicEndpoints-autogen_mcp",
+        "ai.smithery/DynamicEndpoints-m365-core-mcp",
+        "ai.smithery/DynamicEndpoints-powershell-exec-mcp-server",
+        "ai.smithery/FelixYifeiWang-felix-mcp-smithery",
+        "ai.smithery/Funding-Machine-ghl-mcp-fundingmachine"
+      ]
+    },
+    "badShape": {
+      "count": 0
+    },
+    "caseCollisions": {
+      "count": 8,
+      "sample": [
+        "io.github.LocalSynapse/LocalSynapse-mcp",
+        "io.github.LocalSynapse/localsynapse-mcp",
+        "io.github.SceneView/mcp",
+        "io.github.sceneview/mcp",
+        "io.github.Silbercue/silbercueswift",
+        "io.github.silbercue/silbercueswift",
+        "io.github.Zuga-luga/Zugabot",
+        "io.github.Zuga-luga/zugabot"
+      ]
+    }
+  }
+}

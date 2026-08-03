@@ -6,3 +6,6 @@ node_modules/
 
 # pre-release dev-time sample scans (not part of a published census)
 data/samples/
+
+# resume marker for an in-progress scan; provenance lives in summary.json
+scan.started

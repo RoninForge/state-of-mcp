@@ -27,7 +27,7 @@ repository is the dataset the page is built from. Copy-paste formats for every m
 [ATTRIBUTION.md](ATTRIBUTION.md).
 
 When practical, also cite the census date of the values you used (the most recent census is
-`2026-07-22`), so downstream readers know exactly which snapshot of the registry the figures
+`2026-08-03`), so downstream readers know exactly which snapshot of the registry the figures
 describe.
 
 ## Why the underlying facts are not exclusive
