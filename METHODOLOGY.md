@@ -161,6 +161,14 @@ Verdicts, first match wins:
 Advisory observations (`resultType` and cache metadata on results, the resource-not-found error
 code, a declared logging capability) never affect the verdict; they are recorded as warnings.
 
+**Flag counts and reason counts are not the same number, and must not be quoted as if they were.**
+Because at-risk resolves on first match, a server that hard-requires `Mcp-Session-Id` *and*
+declares the deprecated HTTP+SSE transport is recorded with the transport reason, so it carries
+the `sessionRequired` observable without carrying the session reason. In this edition 544 servers
+carry the flag and 528 cite it as their reason. Quote the observable (`sessionRequired`) when
+describing what servers do, and the reason count only when describing why a verdict was assigned.
+The same caution applies to every other signal that also appears as a reason string.
+
 Denominator rules: readiness percentages are computed ONLY over servers with a readiness verdict
 (4,937 in this edition), never over the registered total. A registered-total denominator may only
 carry declared metadata (for example the server.json schema-version distribution), never runtime
