@@ -3,8 +3,14 @@
 [![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-informational)](DATA-LICENSE.md)
 [![Cite this](https://img.shields.io/badge/cite-CITATION.cff-informational)](CITATION.cff)
 
-**A dated, keyless health and conformance census of the official Model Context Protocol
-registry.** Every server in `registry.modelcontextprotocol.io` is checked with the same public,
+RoninForge State of MCP is a dated, keyless health and spec-conformance census of the official
+Model Context Protocol server registry. The data is CC BY 4.0, every verdict is reproducible
+from public endpoints, and no result depends on an API key.
+
+Part of [RoninForge.org](https://roninforge.org), an independent open-source workshop that
+keeps dated, reproducible records of the AI developer tooling economy.
+
+Every server in `registry.modelcontextprotocol.io` is checked with the same public,
 unauthenticated probes and given a verdict: healthy, degraded, dead, or unknown. The result is a
 snapshot, not a leaderboard: what fraction of the registry actually works, on a given date, and
 where it breaks.
