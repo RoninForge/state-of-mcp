@@ -1,6 +1,6 @@
 # Machine-readable citation metadata. GitHub renders a "Cite this repository" button from this file.
 cff-version: 1.2.0
-title: "State of MCP"
+title: "State of MCP: a dated census of the official Model Context Protocol registry"
 message: "If you use this dataset, please cite it using the metadata in this file."
 type: dataset
 authors:
@@ -17,6 +17,7 @@ abstract: >-
 url: "https://roninforge.org/data/state-of-mcp/"
 repository-code: "https://github.com/RoninForge/state-of-mcp"
 license: CC-BY-4.0
+version: "2026-08-03"
 date-released: 2026-08-03
 keywords:
   - Model Context Protocol
