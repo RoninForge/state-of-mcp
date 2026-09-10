@@ -1,0 +1,87 @@
+{
+  "registryBaseUrl": "https://registry.modelcontextprotocol.io/v0/servers",
+  "akashiVersion": "v0.3.0-7-g15983e0",
+  "concurrency": 8,
+  "limit": 0,
+  "startedAt": "2026-09-09T11:35:11Z",
+  "finishedAt": "2026-09-10T04:34:04Z",
+  "overall": {
+    "total": 29522,
+    "counts": {
+      "dead": 1162,
+      "degraded": 4664,
+      "healthy": 23538,
+      "unknown": 158
+    },
+    "rates": {
+      "dead": 0.03936047693245715,
+      "degraded": 0.1579838764311361,
+      "healthy": 0.7973037057109952,
+      "unknown": 0.005351940925411558
+    }
+  },
+  "segments": {
+    "remote": {
+      "total": 17355,
+      "counts": {
+        "dead": 1010,
+        "degraded": 3236,
+        "healthy": 13109,
+        "unknown": 0
+      },
+      "rates": {
+        "dead": 0.0581964851627773,
+        "degraded": 0.1864592336502449,
+        "healthy": 0.7553442811869778,
+        "unknown": 0
+      }
+    }
+  },
+  "nameIssues": {
+    "badCharset": {
+      "count": 5320,
+      "sample": [
+        "ai.alpic.alpix/Alpix",
+        "ai.newzai.api/NewzAI",
+        "ai.smithery/Aman-Amith-Shastry-scientific_computation_mcp",
+        "ai.smithery/Artin0123-gemini-image-mcp-server",
+        "ai.smithery/BadRooBot-my_test_mcp",
+        "ai.smithery/BadRooBot-test_m",
+        "ai.smithery/BigVik193-reddit-ads-mcp",
+        "ai.smithery/BigVik193-reddit-ads-mcp-api",
+        "ai.smithery/BigVik193-reddit-ads-mcp-test",
+        "ai.smithery/BigVik193-reddit-user-mcp",
+        "ai.smithery/BowenXU0126-aistudio_hw3",
+        "ai.smithery/ChiR24-unreal_mcp",
+        "ai.smithery/ChiR24-unreal_mcp_server",
+        "ai.smithery/CollectiveSpend-collectivespend-smithery-mcp",
+        "ai.smithery/CryptoCultCurt-appfolio-mcp-server",
+        "ai.smithery/Danushkumar-V-mcp-discord",
+        "ai.smithery/DynamicEndpoints-autogen_mcp",
+        "ai.smithery/DynamicEndpoints-m365-core-mcp",
+        "ai.smithery/DynamicEndpoints-powershell-exec-mcp-server",
+        "ai.smithery/FelixYifeiWang-felix-mcp-smithery"
+      ]
+    },
+    "badShape": {
+      "count": 0
+    },
+    "caseCollisions": {
+      "count": 12,
+      "sample": [
+        "io.github.Aggrete/aggrete",
+        "io.github.aggrete/aggrete",
+        "io.github.ClockNext/mcp",
+        "io.github.Clocknext/mcp",
+        "io.github.LocalSynapse/LocalSynapse-mcp",
+        "io.github.LocalSynapse/localsynapse-mcp",
+        "io.github.SceneView/mcp",
+        "io.github.sceneview/mcp",
+        "io.github.Silbercue/silbercueswift",
+        "io.github.silbercue/silbercueswift",
+        "io.github.Zuga-luga/Zugabot",
+        "io.github.Zuga-luga/zugabot"
+      ]
+    }
+  }
+}

@@ -35,9 +35,11 @@ data/censuses/<date>/summary.json    verdict counts and rates, segments, run par
   name-validation findings, and the run's reproducibility parameters (registry URL, akashi
   version, concurrency, timeout, start and finish time).
 
-There are three censuses so far: `2026-07` (the 2026-07-02 baseline, 14,559 servers), `2026-07-22`
+There are four censuses so far: `2026-07` (the 2026-07-02 baseline, 14,559 servers), `2026-07-22`
 (18,032; the first spec-readiness edition, whose records add a `readiness` object per reachable
-server) and `2026-08-03` (19,804; the edition in which the first six spec-ready servers appear).
+server), `2026-08-03` (19,804; the edition in which the first six spec-ready servers appear) and
+`2026-09-09` (29,522; the largest jump recorded, +49.1% in thirty-seven days, with the ready cohort
+at 29).
 Each census lands in its own dated `data/censuses/<date>/` directory; the dataset accumulates,
 never overwrites.
 
@@ -76,7 +78,7 @@ this repository" button from it). Copy-paste formats for every medium are in
 Plain:
 
 > State of MCP by RoninForge (https://roninforge.org/data/state-of-mcp/), CC BY 4.0. Census
-> `2026-08-03`, accessed `<date>`.
+> `2026-09-09`, accessed `<date>`.
 
 Credit the dataset's home page rather than this repository. The page carries the methodology, the
 denominators and the findings, and it stays correct if the code moves.
