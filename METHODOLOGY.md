@@ -247,10 +247,15 @@ reason: `requires the removed Mcp-Session-Id session mechanism`, 529 to 1,676. T
 observable, not a probe failure, and it is the one health-adjacent number in this edition moving
 clearly in the wrong direction.
 
-#### Disclosure: a single-operator outage sits inside this edition's stateless rate
+#### Disclosure: two operators' outages sit inside this edition's stateless rate
 
 Stateless tolerance reads **61.0%** (6,305 of 10,336), against 80.9% in 2026-08-03. **That fall is
 roughly half real and half an artefact, and the artefact has one cause.**
+
+**Amended 2026-09-12.** This section originally named one operator. A drift detector built
+afterwards (`akashi scan --compare`, which re-probes any namespace whose signal rates move sharply
+between editions) was run against these two censuses and found a second namespace with the same
+signature, below. The records are unchanged; what was incomplete was this disclosure.
 
 `io.github.pipeworx-io` registers 1,320 servers, 4.5% of the registry. Between the two censuses its
 health verdicts barely moved (1,286 healthy to 1,295) and every one of its servers carries the same
@@ -268,16 +273,36 @@ enforcement unknown" cohort. On a re-probe the following day, 501 of the 1,014 a
 1,086 servers in that cohort flipped only 12. The operator's endpoints were unstable during the
 scan window, and a 17-hour window recorded that instability as a property of the servers.
 
+`io.github.cyanheads` is the second, and it is the same shape at one tenth the size. It registers
+125 servers in both editions, and its readiness verdicts are identical across them: every
+readiness-bearing server reads `needs-migration` in both. Its stateless readings went:
+
+| | 2026-08-03 | 2026-09-09 |
+|---|---|---|
+| statelessAccepted true | 68 | 0 |
+| statelessAccepted false | 5 | 79 |
+
+Every one of its servers that could be read at all read false. A namespace whose verdicts hold
+perfectly still while a signal goes to zero is not a namespace that changed; it is one that was not
+reachable in the way the signal needs during the window it was scanned.
+
 **The record is published exactly as observed. Nothing has been corrected after the fact.** What
-follows is the control a reader needs, computed by removing that one namespace from both editions:
+follows is the control a reader needs, computed by removing those namespaces from both editions:
 
 | Stateless tolerance | 2026-08-03 | 2026-09-09 |
 |---|---|---|
 | all verdict-bearing servers | 80.9% | 61.0% |
 | excluding `io.github.pipeworx-io` | 75.8% | 66.7% |
+| excluding both | 75.5% | 67.3% |
 
-Read the second row. Stateless tolerance did fall, by about 9 points rather than 20. **Do not quote
-61.0% as an ecosystem trend**; quote it as what this census measured, with the operator named.
+Read the last row. Stateless tolerance did fall, by about 8 points rather than 20. **Do not quote
+61.0% as an ecosystem trend**; quote it as what this census measured, with both operators named.
+
+The detector also flagged five further namespaces on the health signal rather than the stateless
+one, the largest being `io.github.Evozim` (375 servers, healthy 99.0% to 26.4%). Those are not
+corrected here either, and they are not folded into the control above: unlike the two named, their
+health verdicts moved with their signals, which is what a population that really changed looks
+like. They are recorded so a later reader knows they were examined rather than missed.
 
 Ruleset status: the readiness rules were compiled from the 2026-07-28 draft changelog while the
 specification was still a release candidate, which is what the `2026-07-28-rc` ruleset version
