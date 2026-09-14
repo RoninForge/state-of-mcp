@@ -252,10 +252,13 @@ clearly in the wrong direction.
 Stateless tolerance reads **61.0%** (6,305 of 10,336), against 80.9% in 2026-08-03. **That fall is
 roughly half real and half an artefact, and the artefact has one cause.**
 
-**Amended 2026-09-12.** This section originally named one operator. A drift detector built
-afterwards (`akashi scan --compare`, which re-probes any namespace whose signal rates move sharply
-between editions) was run against these two censuses and found a second namespace with the same
-signature, below. The records are unchanged; what was incomplete was this disclosure.
+**Amended 2026-09-12, corrected 2026-09-14.** The 09-12 amendment added a second namespace,
+`io.github.cyanheads`, and called it contaminated. **That was wrong, and the 2026-09-13 census
+disproves it.** cyanheads read 0.0% stateless again, four days later, in an independent scan: a
+reading that persists across two censuses is a change, not an outage. The claim was inferred from a
+pattern (verdicts steady while one signal collapses) without the second reading that alone can tell
+the two apart, which is exactly the mistake the drift detector was built to stop. It is corrected
+below rather than quietly removed. The records have never been edited.
 
 `io.github.pipeworx-io` registers 1,320 servers, 4.5% of the registry. Between the two censuses its
 health verdicts barely moved (1,286 healthy to 1,295) and every one of its servers carries the same
@@ -273,36 +276,42 @@ enforcement unknown" cohort. On a re-probe the following day, 501 of the 1,014 a
 1,086 servers in that cohort flipped only 12. The operator's endpoints were unstable during the
 scan window, and a 17-hour window recorded that instability as a property of the servers.
 
-`io.github.cyanheads` is the second, and it is the same shape at one tenth the size. It registers
-125 servers in both editions, and its readiness verdicts are identical across them: every
-readiness-bearing server reads `needs-migration` in both. Its stateless readings went:
+`io.github.cyanheads` was named here on 2026-09-12 as a second contaminated namespace. It is not
+one. Its stateless readings went 93.2% (2026-08-03) to 0.0% (2026-09-09) and **0.0% again on
+2026-09-13**, an independent scan four days later that took 9 hours rather than 17. A transient
+outage does not reproduce exactly, twice, across separate scan windows. cyanheads turned something
+off between the first two censuses and has left it off.
 
-| | 2026-08-03 | 2026-09-09 |
-|---|---|---|
-| statelessAccepted true | 68 | 0 |
-| statelessAccepted false | 5 | 79 |
+The signature that prompted the error was real but not sufficient: its 125 servers keep identical
+verdicts across all three editions (118 healthy, 6 degraded, 1 dead) while one signal goes to zero.
+**A configuration change produces that signature just as cleanly as an outage does.** Only a second
+reading separates them, and cyanheads never had one. That is the whole reason the drift detector
+re-probes rather than just flags.
 
-Every one of its servers that could be read at all read false. A namespace whose verdicts hold
-perfectly still while a signal goes to zero is not a namespace that changed; it is one that was not
-reachable in the way the signal needs during the window it was scanned.
+What pipeworx-io did is now clearer too. Its stateless rate ran 97.4%, then 21.0%, then **0.0% on
+2026-09-13, where a same-day re-probe agreed on 1,294 of the 1,294 servers that answered.** So the
+direction was real and the operator has withdrawn stateless support; what the 17-hour window added
+was noise on top of a genuine change, caught mid-transition. The 2026-09-10 re-probe finding 501 of
+1,014 reading true again is what marks the 21.0% specifically as unstable.
 
 **The record is published exactly as observed. Nothing has been corrected after the fact.** What
-follows is the control a reader needs, computed by removing those namespaces from both editions:
+follows is the control a reader needs, computed by removing the one namespace whose reading that
+edition is known to be unstable:
 
 | Stateless tolerance | 2026-08-03 | 2026-09-09 |
 |---|---|---|
 | all verdict-bearing servers | 80.9% | 61.0% |
 | excluding `io.github.pipeworx-io` | 75.8% | 66.7% |
-| excluding both | 75.5% | 67.3% |
 
-Read the last row. Stateless tolerance did fall, by about 8 points rather than 20. **Do not quote
-61.0% as an ecosystem trend**; quote it as what this census measured, with both operators named.
+Read the second row. Stateless tolerance did fall, by about 9 points rather than 20. **Do not quote
+61.0% as an ecosystem trend**; quote it as what this census measured, with the operator named. Do
+not exclude cyanheads: it really did change, and removing it would understate a real fall.
 
 The detector also flagged five further namespaces on the health signal rather than the stateless
-one, the largest being `io.github.Evozim` (375 servers, healthy 99.0% to 26.4%). Those are not
-corrected here either, and they are not folded into the control above: unlike the two named, their
-health verdicts moved with their signals, which is what a population that really changed looks
-like. They are recorded so a later reader knows they were examined rather than missed.
+one, the largest being `io.github.Evozim` (375 servers, healthy 99.0% to 26.4%). They are not in
+the control above: their health verdicts moved with their signals, which is what a population that
+really changed looks like. They are recorded so a later reader knows they were examined rather than
+missed, and on the evidence now available the same is true of cyanheads.
 
 Ruleset status: the readiness rules were compiled from the 2026-07-28 draft changelog while the
 specification was still a release candidate, which is what the `2026-07-28-rc` ruleset version
