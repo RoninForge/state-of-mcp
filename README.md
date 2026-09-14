@@ -24,6 +24,7 @@ behind them.
 ```
 data/censuses/<date>/records.jsonl   one probe result per server, one JSON line each
 data/censuses/<date>/summary.json    verdict counts and rates, segments, run parameters
+data/censuses/<date>/reprobe.jsonl   second readings for namespaces that drifted (since 2026-09-13)
 ```
 
 - `records.jsonl` - the raw census. Each line is a single server's result: its registry name,
@@ -34,12 +35,19 @@ data/censuses/<date>/summary.json    verdict counts and rates, segments, run par
 - `summary.json` - the rolled-up counts and rates, a remote-bearing segment breakdown,
   name-validation findings, and the run's reproducibility parameters (registry URL, akashi
   version, concurrency, timeout, start and finish time).
+- `reprobe.jsonl` - present when the scan was given the previous census to compare against. A
+  census takes hours, long enough for an operator's outage to be recorded as a property of its
+  servers, so any namespace whose aggregate signals moved sharply is probed a second time and the
+  second reading is kept here. It never edits `records.jsonl`: the census stays as first observed
+  and the second reading sits beside it, with a `reprobe` block in `summary.json` reporting which
+  namespaces moved and whether the second reading agreed.
 
-There are four censuses so far: `2026-07` (the 2026-07-02 baseline, 14,559 servers), `2026-07-22`
+There are five censuses so far: `2026-07` (the 2026-07-02 baseline, 14,559 servers), `2026-07-22`
 (18,032; the first spec-readiness edition, whose records add a `readiness` object per reachable
-server), `2026-08-03` (19,804; the edition in which the first six spec-ready servers appear) and
+server), `2026-08-03` (19,804; the edition in which the first six spec-ready servers appear),
 `2026-09-09` (29,522; the largest jump recorded, +49.1% in thirty-seven days, with the ready cohort
-at 29).
+at 29) and `2026-09-13` (31,538; the first edition to re-probe its own drifting namespaces, and the
+first whose scan window shortened, 9 hours against the previous 17).
 Each census lands in its own dated `data/censuses/<date>/` directory; the dataset accumulates,
 never overwrites.
 

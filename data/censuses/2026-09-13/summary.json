@@ -1,0 +1,135 @@
+{
+  "registryBaseUrl": "https://registry.modelcontextprotocol.io/v0/servers",
+  "akashiVersion": "v0.3.0-11-g69de215",
+  "concurrency": 8,
+  "limit": 0,
+  "startedAt": "2026-09-13T06:35:20Z",
+  "finishedAt": "2026-09-13T15:32:48Z",
+  "overall": {
+    "total": 31538,
+    "counts": {
+      "dead": 1184,
+      "degraded": 4667,
+      "healthy": 25411,
+      "unknown": 276
+    },
+    "rates": {
+      "dead": 0.03754201280994356,
+      "degraded": 0.14798021434460015,
+      "healthy": 0.80572642526476,
+      "unknown": 0.008751347580696303
+    }
+  },
+  "reprobe": {
+    "comparedTo": "data/censuses/2026-09-09",
+    "thresholdPoints": 10,
+    "minServers": 25,
+    "maxServers": 3000,
+    "startedAt": "2026-09-13T15:19:20Z",
+    "finishedAt": "2026-09-13T15:32:48Z",
+    "candidates": 3,
+    "truncated": false,
+    "namespaces": [
+      {
+        "namespace": "io.github.wyre-technology",
+        "servers": 57,
+        "signal": "healthy",
+        "previousPct": 100,
+        "currentPct": 0,
+        "deltaPoints": 100,
+        "reprobed": 57,
+        "agreed": 0,
+        "changed": 57,
+        "noAnswer": 0
+      },
+      {
+        "namespace": "io.tooloracle",
+        "servers": 61,
+        "signal": "healthy",
+        "previousPct": 23,
+        "currentPct": 95.1,
+        "deltaPoints": 72.1,
+        "reprobed": 61,
+        "agreed": 13,
+        "changed": 48,
+        "noAnswer": 0
+      },
+      {
+        "namespace": "io.github.pipeworx-io",
+        "servers": 1337,
+        "signal": "statelessAccepted",
+        "previousPct": 21,
+        "currentPct": 0,
+        "deltaPoints": 21,
+        "reprobed": 1337,
+        "agreed": 1294,
+        "changed": 0,
+        "noAnswer": 33
+      }
+    ]
+  },
+  "segments": {
+    "remote": {
+      "total": 19150,
+      "counts": {
+        "dead": 1038,
+        "degraded": 3264,
+        "healthy": 14848,
+        "unknown": 0
+      },
+      "rates": {
+        "dead": 0.054203655352480416,
+        "degraded": 0.170443864229765,
+        "healthy": 0.7753524804177546,
+        "unknown": 0
+      }
+    }
+  },
+  "nameIssues": {
+    "badCharset": {
+      "count": 5418,
+      "sample": [
+        "ai.alpic.alpix/Alpix",
+        "ai.newzai.api/NewzAI",
+        "ai.smithery/Aman-Amith-Shastry-scientific_computation_mcp",
+        "ai.smithery/Artin0123-gemini-image-mcp-server",
+        "ai.smithery/BadRooBot-my_test_mcp",
+        "ai.smithery/BadRooBot-test_m",
+        "ai.smithery/BigVik193-reddit-ads-mcp",
+        "ai.smithery/BigVik193-reddit-ads-mcp-api",
+        "ai.smithery/BigVik193-reddit-ads-mcp-test",
+        "ai.smithery/BigVik193-reddit-user-mcp",
+        "ai.smithery/BowenXU0126-aistudio_hw3",
+        "ai.smithery/ChiR24-unreal_mcp",
+        "ai.smithery/ChiR24-unreal_mcp_server",
+        "ai.smithery/CollectiveSpend-collectivespend-smithery-mcp",
+        "ai.smithery/CryptoCultCurt-appfolio-mcp-server",
+        "ai.smithery/Danushkumar-V-mcp-discord",
+        "ai.smithery/DynamicEndpoints-autogen_mcp",
+        "ai.smithery/DynamicEndpoints-m365-core-mcp",
+        "ai.smithery/DynamicEndpoints-powershell-exec-mcp-server",
+        "ai.smithery/FelixYifeiWang-felix-mcp-smithery"
+      ]
+    },
+    "badShape": {
+      "count": 0
+    },
+    "caseCollisions": {
+      "count": 12,
+      "sample": [
+        "io.github.Aggrete/aggrete",
+        "io.github.aggrete/aggrete",
+        "io.github.ClockNext/mcp",
+        "io.github.Clocknext/mcp",
+        "io.github.LocalSynapse/LocalSynapse-mcp",
+        "io.github.LocalSynapse/localsynapse-mcp",
+        "io.github.SceneView/mcp",
+        "io.github.sceneview/mcp",
+        "io.github.Silbercue/silbercueswift",
+        "io.github.silbercue/silbercueswift",
+        "io.github.Zuga-luga/Zugabot",
+        "io.github.Zuga-luga/zugabot"
+      ]
+    }
+  }
+}

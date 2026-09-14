@@ -17,8 +17,8 @@ abstract: >-
 url: "https://roninforge.org/data/state-of-mcp/"
 repository-code: "https://github.com/RoninForge/state-of-mcp"
 license: CC-BY-4.0
-version: "2026-09-09"
-date-released: 2026-09-09
+version: "2026-09-13"
+date-released: 2026-09-13
 keywords:
   - Model Context Protocol
   - MCP
