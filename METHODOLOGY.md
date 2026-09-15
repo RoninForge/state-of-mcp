@@ -85,7 +85,11 @@ fails, warns, or is skipped (not applicable to that server's declared entrypoint
   authenticates to no probed server and runs none of its tools. A GitHub token, if present, only
   raises the public-API rate limit.
 - **reproducible** - same registry, same probe set, same documented criteria, `akashi v0.3.0`. Any
-  row in `records.jsonl` is re-checkable with `akashi check <server>`.
+  census row is re-checkable with `akashi check <server>`. Censuses up to 2026-09-13 keep every
+  row in one `records.jsonl`; later ones shard the same rows across `records/<NN>.jsonl` by
+  namespace, because the single file reached 51.5 MiB at 31,538 servers and GitHub refuses a push
+  past 100 MiB. The rows are unchanged, and `records/manifest.json` maps each namespace to its
+  shard.
 
 ## Headline (2026-09-13 edition)
 
