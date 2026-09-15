@@ -22,12 +22,22 @@ behind them.
 ## What is in here
 
 ```
-data/censuses/<date>/records.jsonl   one probe result per server, one JSON line each
-data/censuses/<date>/summary.json    verdict counts and rates, segments, run parameters
-data/censuses/<date>/reprobe.jsonl   second readings for namespaces that drifted (since 2026-09-13)
+data/censuses/<date>/records/<NN>.jsonl    the raw census, sharded (censuses after 2026-09-13)
+data/censuses/<date>/records/manifest.json shard counts and the namespace-to-shard map
+data/censuses/<date>/records.jsonl         the same records, one file (up to 2026-09-13)
+data/censuses/<date>/summary.json          verdict counts and rates, segments, run parameters
+data/censuses/<date>/reprobe.jsonl         second readings for namespaces that drifted (since 2026-09-13)
 ```
 
-- `records.jsonl` - the raw census. Each line is a single server's result: its registry name,
+Censuses up to `2026-09-13` keep a single `records.jsonl`. That file reached 51.5 MiB at 31,538
+servers, past the 50 MiB GitHub warns at, and the 100 MiB hard limit lands near 47,700 servers at
+the same bytes per server, so later censuses shard the same lines across 64 files instead. Nothing
+about a record changed: only which file it sits in. A namespace is never split across shards, so
+one operator's servers are always in exactly one file, and `records/manifest.json` maps each
+namespace to its shard, so a consumer wanting one operator fetches one small file rather than the
+whole census. Both layouts are read by `akashi scan --compare` and by the published build.
+
+- the census records - the raw census. Each line is a single server's result: its registry name,
   verdict, the individual checks that ran (registry status, server.json validity, repo
   reachability and freshness, package publish status, remote reachability, MCP conformance), and
   the underlying signals behind each check. Every line is independently reproducible: it is
@@ -38,7 +48,7 @@ data/censuses/<date>/reprobe.jsonl   second readings for namespaces that drifted
 - `reprobe.jsonl` - present when the scan was given the previous census to compare against. A
   census takes hours, long enough for an operator's outage to be recorded as a property of its
   servers, so any namespace whose aggregate signals moved sharply is probed a second time and the
-  second reading is kept here. It never edits `records.jsonl`: the census stays as first observed
+  second reading is kept here. It never edits the census records: they stay as first observed
   and the second reading sits beside it, with a `reprobe` block in `summary.json` reporting which
   namespaces moved and whether the second reading agreed.
 
